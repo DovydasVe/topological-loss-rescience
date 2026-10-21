@@ -64,5 +64,5 @@ Open and execute **`reproduction_topological_loss.ipynb`** sequentially:
 ## Hardware & Reproducibility Notes
 
 - **Primary Environment:** Google Colab (NVIDIA L4 GPU, PyTorch 2.x).
-- **Alternative Environment:** Kaggle (2$\times$ NVIDIA Tesla T4 GPUs).
+- **Alternative Environment:** Kaggle (2 $\times$ NVIDIA Tesla T4 GPUs).
 - Random seeds (`seed = 42`) and deterministic CuDNN flags are enforced across all scripts. Minor floating-point variations may occur across different GPU architectures due to non-deterministic CUDA reductions.
