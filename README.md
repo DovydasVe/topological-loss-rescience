@@ -39,7 +39,7 @@ Requires **Python $\ge$ 3.10** and a CUDA-capable GPU (recommended).
 
 Both datasets download and extract automatically inside `reproduction_topological_loss.ipynb`:
 - **MNIST:** Downloaded via `torchvision.datasets.MNIST`.
-- **ACDC:** Downloaded via `huggingface_hub` from a public mirror of the Automated Cardiac Diagnosis Challenge (100 training patients, 50 test patients) into `./acdc_data/`.
+- **ACDC:** Downloaded via `huggingface_hub` from a public mirror of the Automated Cardiac Diagnosis Challenge.
 
 ---
 
@@ -47,13 +47,15 @@ Both datasets download and extract automatically inside `reproduction_topologica
 
 Open and execute **`reproduction_topological_loss.ipynb`** sequentially:
 
-**Experiment 1 (MNIST Denoising & Classification):**
+**Experiment 1**
    - Trains baseline denoising autoencoders across corruption levels $m \in \{2, 4, 6, 8, 10, 12\}$.
    - Applies sample-wise topological post-processing ($\lambda = 0.02$, $\eta = 10^{-4}$, $N_{\text{iter}} = 50$) on $N = 1000$ test images and evaluates MSE (Wilcoxon signed-rank test) and accuracy (McNemar's test).
-**Experiment 3 (ACDC Left Ventricular Myocardium Segmentation):**
+
+**Experiment 3**
    - Trains a 4-level 2D U-Net with early stopping on patient-level 3D Dice.
    - Applies slice-wise topological post-processing ($\lambda = 0.01$, $\eta = 10^{-5}$, $N_{\text{iter}} = 5$) across all 1,076 test slices (50 patients) and evaluates volumetric 3D Dice for End-Diastole (ED) and End-Systole (ES).
-**Execution Flags:**
+
+**Execution Flags**
    - `run_experiments = True` executes the main experiments.
    - `run_grids = False` (default) skips the hyperparameter sensitivity grid searches to save compute time; set to `True` to regenerate the heatmaps.
 
