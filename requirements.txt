@@ -1,0 +1,19 @@
+# Deep Learning & Vision
+torch>=2.0.0
+torchvision>=0.16.0
+
+# Scientific Computing & Medical Imaging
+numpy>=1.23.0
+scipy>=1.10.0
+nibabel>=5.0.0
+huggingface_hub>=0.20.0
+
+# Visualization & Figure Generation
+matplotlib>=3.7.0
+gudhi>=3.8.0
+
+# Topological Deep Learning
+# Note: TopologyLayer requires C++ extensions and patched AT_CHECK macros for PyTorch >= 1.5 / 2.x.
+# For automated setup on Linux/Colab/Kaggle, see Cell 2 in reproduction_topological_loss.ipynb.
+# If installing manually from source:
+# git+https://github.com/bruel-gabrielsson/TopologyLayer.git
