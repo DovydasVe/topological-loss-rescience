@@ -16,6 +16,15 @@ def compute_topological_loss_single(Z_single, target_betti, dgminfo, max_k=15, d
     Penalizes deviations from target Betti numbers (beta_0, beta_1) by maximizing
     the lengths of the target longest bars and penalizing extraneous bars.
 
+    Implementation Note:
+        TopologyLayer's `TopKBarcodeLengths` omits the infinite H_0 bar
+        that always exists on a bounded 2D grid, returning only finite persistence
+        pairs, and truncates the infinite sum at `max_k`. Consequently, for dim=0,
+        the target finite bar count is shifted by one: `effective_target = max(0, beta_0 - 1)`.
+        Because the essential bar is omitted, beta_0 = 0 (empty slice) and beta_0 = 1
+        (single component) produce the same finite-bar objective (penalizing all
+        finite H_0 bars).
+
     Args:
         Z_single (torch.Tensor): Model output tensor for a single slice (1, C, H, W).
         target_betti (tuple or dict): Target (beta_0, beta_1) numbers.

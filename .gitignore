@@ -1,3 +1,5 @@
 __pycache__/
 mnist_data/
 acdc_data/
+TopologyLayer/
+*.pt

@@ -239,7 +239,7 @@ def evaluate_3d_dice(Y_pred_tensor, Y_test, patient_volumes, device="cuda", retu
 
 
 def run_post_processing(X, Y, lambda_topo, lr_topo, iter_topo, H_dict,
-                        gpu_id, slice_indices, device, seed=42):
+                        gpu_id, slice_indices, device, size=(256,256), seed=42):
     """Worker function executing topological post-processing on a chunk of ACDC slices.
 
     Loads the saved baseline model, initializes a 256x256 LevelSetLayer2D, and
@@ -255,6 +255,7 @@ def run_post_processing(X, Y, lambda_topo, lr_topo, iter_topo, H_dict,
         gpu_id (int or str): Assigned GPU index for this worker chunk.
         slice_indices (list of int): Subset of slice indices to process.
         device (str or torch.device): Primary device for initial weights loading.
+        size (tuple, optional): Resolution to interpolate predictions to before computing topology.
         seed (int): Random seed.
 
     Returns:
@@ -270,7 +271,7 @@ def run_post_processing(X, Y, lambda_topo, lr_topo, iter_topo, H_dict,
     model.load_state_dict(state_dict)
     model = model.to(device)
 
-    size = (256, 256)
+    size = size
     dgminfo = LevelSetLayer2D(size=size, sublevel=False, maxdim=1)
 
     _, _, y_bef, y_aft = post_processing_framework(
