@@ -12,7 +12,8 @@ This repository reproduces the test-time topological post-processing framework a
 ├── reproduction_topological_loss.ipynb   # Main end-to-end replication notebook
 ├── loss_functions.py                     # Topological loss & post-processing framework
 ├── neural_nets_mnist.py                  # Experiment 1: MNIST denoiser, classifier & training
-├── neural_nets_acdc.py                   # Experiment 3: ACDC 2D U-Net, training & 3D Dice evaluation
+├── neural_nets_acdc.py                   # Experiment 3: ACDC U-Net, training & 3D Dice evaluation
+├── article/                              # Replication paper and related Latex files
 ├── figures/                              # Paper figures & barcode generation notebook (figures.ipynb)
 ├── requirements.txt                      # Python dependencies
 └── LICENSE                               # MIT License
